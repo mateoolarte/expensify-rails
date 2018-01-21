@@ -1,19 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="total-box col-md-3">
-      $200,000
+    <div class="total-box col-md-3 totaltoday">
       <span>HOY</span>
     </div>
-    <div class="total-box col-md-3">
-      $140,000
+    <div class="total-box col-md-3 totalyesterday">
       <span>AYER</span>
     </div>
-    <div class="total-box col-md-3">
-      $7,500,000
+    <div class="total-box col-md-3 totalpresentmonth">
       <span>ESTE MES</span>
     </div>
-    <div class="total-box col-md-3">
-      $6,200,000
+    <div class="total-box col-md-3 totalpreviousmonth">
       <span>MES PASADO</span>
     </div>
   </div>
@@ -23,7 +19,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Últimos 6 Meses</div>
         <div class="panel-body">
-          <div id="expenses-chart" style="height: 250px;"></div>
+          <%= content_tag :div, "", id: "expenses-chart", class: "chart-height", data: { expenses: @expenses_six_months } %>
         </div>
       </div>
     </div>
@@ -31,7 +27,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Por Día</div>
         <div class="panel-body">
-          <div id="daily-expenses-chart" style="height: 250px;"></div>
+          <%= content_tag :div, "", id: "daily-expenses-chart", class: "chart-height" %>
         </div>
       </div>
     </div>
@@ -42,7 +38,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Por Categoría</div>
         <div class="panel-body">
-          <div id="category-chart" style="height: 250px;"></div>
+          <%= content_tag :div, "", id: "category-chart", class: "chart-height", data: { categories: @categories } %>
         </div>
       </div>
     </div>
@@ -50,7 +46,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Acumulado</div>
         <div class="panel-body">
-          <div id="month-acc" style="height: 250px;"></div>
+          <%= content_tag :div, "", id: "month-acc", class: "chart-height" %>
         </div>
       </div>
     </div>
