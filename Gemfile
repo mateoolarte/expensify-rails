@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Use faker for create fake data
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,10 +44,9 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
-group :test do
-  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
-end  
-
+# group :test do
+  
+# end  
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
