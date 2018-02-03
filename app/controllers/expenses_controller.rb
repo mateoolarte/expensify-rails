@@ -1,12 +1,13 @@
 class ExpensesController < ApplicationController
+  before_action :find_expense, only: [:edit, :update, :destroy]
+  before_action :get_expenses_per_month, only: [:index, :create, :update, :destroy]
+
   def index
     @tab = :expenses
 
-    @categories = Category.all
     @dropdown_date = Expense.where(date: DateTime.now.all_month).first
     @expenses_last_year = Expense.get_months_last_year
     @expenses_options = Expense.get_options
-    @expenses_per_month = Expense.where(date: DateTime.now.all_month).order(date: :desc)
     
     if params[:month_ago].present?
       @dropdown_date = Expense.where(date: DateTime.now.months_ago(params[:month_ago].to_i).all_month).first
@@ -29,28 +30,33 @@ class ExpensesController < ApplicationController
 
   def new
     @expense = Expense.new
-    respond_to do |format|
-      format.js
-      format.html
-    end
   end
 
   def create
     @expense = Expense.create(expense_params)
   end
 
+  def edit
+  end
+
   def update
-    @expense = Expense.find(params[:id])
     @expense.update(expense_params)
   end
 
   def destroy
-    @expense = Expense.find(params[:id])
     @expense.destroy
   end
 
   private
     def expense_params
       params.require(:expense).permit(:options, :concept, :date, :amount, :category_id)
+    end
+
+    def find_expense
+      @expense = Expense.find(params[:id])
+    end
+
+    def get_expenses_per_month
+      @expenses_per_month = Expense.where(date: DateTime.now.all_month).order(date: :desc)
     end
 end

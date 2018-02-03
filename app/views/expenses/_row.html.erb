@@ -1,4 +1,4 @@
-<tr>
+<tr id="<%= expense.id %>">
   <td class="date">
     <div class="day"><%= expense.date.strftime("%d") %></div>
     <div class="month"><%= expense.date.strftime("%b") %></div>
@@ -18,7 +18,7 @@
       <%= link_to edit_expense_path(expense), remote: true do %>
         <span class="glyphicon glyphicon-edit"></span> Editar
       <% end %>
-      <%= link_to expense, method: :delete, remote: true do %>
+      <%= link_to expense, method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar el gasto?" }, remote: true do %>
         <span class="glyphicon glyphicon-edit"></span> Eliminar
       <% end %>
     </div>  

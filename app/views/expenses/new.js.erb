@@ -1,1 +1,4 @@
-$('<%= j render "form", title: "Crear gasto" %>').modal()
+$('<%= j render "form_new_expenses", title: "Crear gasto" %>').on('hidden.bs.modal', function (e) {
+  $(this).remove();
+  $('.modal-backdrop').remove();
+}).modal();
