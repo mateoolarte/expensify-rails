@@ -19,7 +19,7 @@ Category.create(name: "Viajes")
 require 'faker'
 
 # Expenses
-number_of_expenses = 3000
+number_of_expenses = 1000
 
 number_of_expenses.times do |index|
   Expense.create({

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "dashboard#index"
 
-  resources :expenses, only: [:index]
+  resources :expenses
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

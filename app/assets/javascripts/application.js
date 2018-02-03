@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require turbolinks
-//= require canvasjs
+//= require bootstrap-sprockets
 //= require moment
+//= require canvasjs
 //= require_tree .

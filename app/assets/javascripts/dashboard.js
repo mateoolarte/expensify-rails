@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load", () => {
+function LoadMetrics() {
   /* Toggle Data in Chart */
   const toggleDataSeries = function (e) {
     if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
@@ -62,10 +62,10 @@ $(document).on("turbolinks:load", () => {
   const expensesPresentMonth = expensesOneMonth
   const expensesPreviousMonth = expensesSixMonths.filter(expense => expense.date >= startpreviousMonth && expense.date <= endPreviousMonth)
 
-  expensesToday.forEach((value, index) => totalToday += parseInt(value.amount))
-  expensesYesterday.forEach((value, index) => totalYesterday += parseInt(value.amount))
-  expensesPresentMonth.forEach((value, index) => totalPresentMonth += parseInt(value.amount))
-  expensesPreviousMonth.forEach((value, index) => totalPreviousMonth += parseInt(value.amount))
+  expensesToday.forEach((value, index) => totalToday += parseFloat(value.amount))
+  expensesYesterday.forEach((value, index) => totalYesterday += parseFloat(value.amount))
+  expensesPresentMonth.forEach((value, index) => totalPresentMonth += parseFloat(value.amount))
+  expensesPreviousMonth.forEach((value, index) => totalPreviousMonth += parseFloat(value.amount))
 
   $(".totaltoday").prepend(`$${totalToday.toLocaleString()}`)
   $(".totalyesterday").prepend(`$${totalYesterday.toLocaleString()}`)
@@ -82,7 +82,7 @@ $(document).on("turbolinks:load", () => {
       const year = moment(value.date, "YYYY-MM-DD").year()
       const month = moment(value.date, "YYYY-MM-DD").month()
       const day = moment(value.date, "YYYY-MM-DD").date()
-      const amount = parseInt(value.amount)
+      const amount = parseFloat(value.amount)
 
       dataValues.push({
         x: data_months == expensesSixMonths ? new Date(year, month) : day,
@@ -120,7 +120,7 @@ $(document).on("turbolinks:load", () => {
 
     const expenseTypeCategory = expensesOneMonth.filter(expense => expense.category_id == category)
 
-    expenseTypeCategory.forEach((value, index) => totalAmount += parseInt(value.amount))
+    expenseTypeCategory.forEach((value, index) => totalAmount += parseFloat(value.amount))
 
     let modelCategory = category = category - 1
 
@@ -167,7 +167,7 @@ $(document).on("turbolinks:load", () => {
 
     data.sort(compare).forEach((value, index) => {
       const day = moment(value.date, "YYYY-MM-DD").date()
-      const amount = parseInt(value.amount)
+      const amount = parseFloat(value.amount)
 
       if (dataValues[day] == day) {
         dataValues[day].y = totalAmount + amount
@@ -261,4 +261,4 @@ $(document).on("turbolinks:load", () => {
   chartPerDay.render()
   chartPerCategory.render()
   chartTotalMonth.render()
-})
+}
