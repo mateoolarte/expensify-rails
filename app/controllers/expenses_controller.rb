@@ -34,6 +34,7 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.create(expense_params)
+    flash[:success] = @expense
   end
 
   def edit
@@ -41,10 +42,12 @@ class ExpensesController < ApplicationController
 
   def update
     @expense.update(expense_params)
+    flash[:updated] = "El gasto ha sido actualizado con éxito" 
   end
 
   def destroy
     @expense.destroy
+    flash[:delete] = @expense
   end
 
   private

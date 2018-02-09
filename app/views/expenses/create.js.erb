@@ -1,5 +1,10 @@
 <% if @expense.errors.empty? %>
   // add the row to the table, update header values, show alert and hide modal
+  const type = "<%= flash[:success].options %>"
+  const concept = "<%= flash[:success].concept %>"
+  const amount = "<%= number_to_currency(flash[:success].amount) %>"
+  const date = "<%= flash[:success].date.strftime("%B %d") %>"
+  $(".expense-alert").removeClass("alert-danger").addClass("fade in alert-success").append(`${type} <strong>${concept}</strong> por <strong>${amount}</strong> el día <strong>${date}</strong> fue creado exitosamente`)
   $('#expenses-table tbody').append('<%= j render "row", expense: @expense %>')
   $('.total-per-month').html("<%= number_to_currency(get_total_amount_per_month(@expenses_per_month)) %>")
   $('.total-transactions').html("<%= @expenses_per_month.count %>")
@@ -7,5 +12,6 @@
   $('#expense-modal').modal('hide')
 <% else %>
   // show first error
-  alert('<%= @expense.errors.full_messages[0] %>')
+  $(".concept-group").addClass("has-error")
+  $(".concept-field").text("<%= @expense.errors.full_messages[0] %>").removeClass("hide")
 <% end %>

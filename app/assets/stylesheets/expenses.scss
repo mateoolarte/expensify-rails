@@ -59,3 +59,13 @@ a.list-group-item { color: #808487; }
 
   tr:hover .actions a { visibility: visible; }
 }
+
+.expense-alert {
+  display: inline-block;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 50%;
+  z-index: 9999;
+  opacity: 0;
+}
