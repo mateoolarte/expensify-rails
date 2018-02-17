@@ -4,7 +4,7 @@
       <h4 class="filter-header">Tipo de transacción <span>Elige para filtrar<span></h4>
       <div class="list-group filter-type">
         <% @expenses_options.each do |option| %>
-          <a href="#" class="list-group-item filters" data-options="<%= option %>"><%= option %></a>
+          <a href="#" class="list-group-item filter-option" data-options="<%= option %>"><%= option %></a>
         <% end %>
         <!-- more transaction types -->
       </div>
@@ -12,7 +12,7 @@
       <h4 class="filter-header">Categoría <span>Selecciona para filtrar</span></h4>
       <div class="list-group filter-type">
         <% get_categories.each do |category| %>
-          <a href="#" class="list-group-item filters" data-category="<%= category.name %>"><%= category.name %></a>
+          <a href="#" class="list-group-item filter-category" data-category="<%= category.id %>"><%= category.name %></a>
         <% end %>
         <!-- more categories  -->
       </div>
@@ -40,13 +40,14 @@
           <% end %>
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">
-              <%= @dropdown_date.date.strftime("%B %Y") %> <span class="caret"></span>
+              <div><%= @dropdown_date.date.strftime("%B %Y") %></div>
+              <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
               <% @expenses_last_year.each do |date_month| %>
                 <% date_month.each do |k, v| %>
                   <li role="presentation">
-                    <a href="" class="filters"><%= v %></a>
+                    <a href="#" class="filter-month" data-month="<%= k %>"><%= v %></a>
                   </li>
                 <% end %>
               <% end %>

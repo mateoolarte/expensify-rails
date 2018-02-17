@@ -65,7 +65,17 @@ a.list-group-item { color: #808487; }
   position: absolute;
   right: 30px;
   top: 30px;
-  width: 50%;
+  max-width: 50%;
   z-index: 9999;
   opacity: 0;
+
+  div {
+    display: inline-block;
+  }
+}
+
+.dropdown-toggle {
+  div {
+    display: inline-block;
+  }
 }

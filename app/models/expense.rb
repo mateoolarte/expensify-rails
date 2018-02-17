@@ -3,12 +3,11 @@ class Expense < ApplicationRecord
 
   validates :concept, :date, :amount, :options, presence: true
   validates :amount, numericality: true
-  validates :concept, length: { minimum: 5 }
 
   scope :expenses_six_months, -> { where( date: (DateTime.now.months_ago(6).beginning_of_month)..DateTime.now) }
 
   def self.get_options
-    expenses = Expense.all
+    expenses = self.all
     arr_options = []
     expenses.each do |expense|
       arr_options << expense.options unless arr_options.include? expense.options
@@ -17,7 +16,7 @@ class Expense < ApplicationRecord
   end
 
   def self.get_months_last_year
-    months = Expense.where(date: (DateTime.now.prev_year.beginning_of_month)..DateTime.now).order(date: :desc)
+    months = self.where(date: (DateTime.now.prev_year.beginning_of_month)..DateTime.now).order(date: :desc)
     months_last_year = []
     array_temp_months = []
     months.each do |month|
