@@ -6,6 +6,10 @@ class Expense < ApplicationRecord
 
   scope :expenses_six_months, -> { where( date: (DateTime.now.months_ago(6).beginning_of_month)..DateTime.now) }
 
+  def get_date_dropdown
+    self.date.strftime("%B %Y")
+  end
+  
   def self.get_options
     expenses = self.all
     arr_options = []

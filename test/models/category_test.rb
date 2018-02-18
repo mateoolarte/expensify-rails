@@ -5,4 +5,8 @@ class CategoryTest < ActiveSupport::TestCase
     @category = Category.new
     assert_not @category.save
   end 
+
+  test "category has many expenses" do
+    assert_equal 1, categories(:one).expenses.size
+  end 
 end

@@ -15,4 +15,9 @@ class ExpenseTest < ActiveSupport::TestCase
     @expense = Expense.new(amount: "string")
     assert_not @expense.save
   end  
+
+  test "get_options" do
+    options = Expense.get_options
+    assert_equal ["Compra", "Retiro"], options
+  end  
 end

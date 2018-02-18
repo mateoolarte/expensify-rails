@@ -12,7 +12,7 @@ module ExpensesHelper
     total = 0
     data.each do |expense|
       total += expense.amount
-    end  
+    end
     total
   end
 end
