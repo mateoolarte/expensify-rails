@@ -1,20 +1,15 @@
 services:
-  - postgresql
-
+- postgresql
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
 language: ruby
-
 rvm:
-  - 2.2.5
-
+- 2.2.5
 script:
-  - bundle exec rails db:migrate RAILS_ENV=test
-  - bundle exec rails test
-
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rails test
 deploy:
   provider: heroku
   api_key:
-    secure: "925b60ee-a49c-47e7-ba05-8453221e0e4d"
+    secure: pJiFi1IY68jSL4gNhGcJ5/zjmIcE+OzdGaY7kdikJ0U/ooG+J9m0at002JQ/51VkpoONy1na4e9YTRE8OUGLAOi8NdhfL2B1Qpmb0XvkGXbbM88lwZdOIiRl4wGECTT/HBjyoDX7O2xIQl0WhMq7c2trQPiBCYj/frUpder3J6SJoHsjljsR7Mp2bAnaReMPXxf1cwEWiiBgNdTciD85ejx4Vje6OQqxjS8YHrgd+TCo6oPdvBqMFBUGq/bAqi4C3O/klhVl2LEnFDXemMtxGlnPFEeN9pQ8jnvIT9ZE+Q472tJ6v6pSlCdMjxTCOBzzWH4CwkOtATPLSqvmnGfIdu1TczjNxMs9Oyx+bJFTV7awKlSF2bLTVZ7oJb7iUMgV0KCvzRMEsA/WwrrFYOK8fuDovoE7Q4AQy1s+bn8dMaZUupsqOOtPnKkYOGDHh2nSaz3XpaCiazTsaRWLO0ltJg5flEMYGWf9dR9g8U9ACgD/YmeKGZXS219SUUruSLuk5H77jx5R2tEFfgvocTnNTiGnbJAJaw67IPUOP8L374Kut7nQ3s+3x7tfnUTCE6ZTCM3mSqKMO9MtFKvhICDWMP9HuUlhmRJkXngI09lp9UZxoDcGl9lEdOckdZBpCOZyqfvvjpQnp47EUDr+TItMm4ReZK5+SMlQZmT920zrqCM=
