@@ -57,4 +57,6 @@ function LoadAJAX() {
   filterEvent(".filter-option", "options")
   filterEvent(".filter-category", "category")
   filterEvent(".filter-month", "month")
+
+  $("#alert-message .close span").on("click", () => $("#alert-message").removeClass("fade in"))
 }

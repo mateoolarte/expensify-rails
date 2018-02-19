@@ -2,8 +2,6 @@
   // remove the row from list
   $(`#${<%= @expense.id %>}`).remove()
 
-  // add the row to the table
-  $('#expenses-table tbody').append('<%= j render "expense_box", expense: @expense %>').show()
 
   // update header values
   $('.total-per-month').html("<%= number_to_currency(get_total_amount_per_month(@expenses)) %>")
@@ -11,8 +9,8 @@
   $('.average-transactions').html("<%= number_to_currency(get_average_per_month(@expenses)) %>")
 
   // show alert
-  $(".expense-alert").removeClass("alert-danger").addClass("fade in alert-success")
-  $(".expense-alert div").html("<%= flash[:updated] %>")
+  $(".alert-growl").removeClass("alert-danger").addClass("fade in alert-success")
+  $(".alert-growl div").html("<%= flash[:updated] %>")
 
   // hide modal
   $('#expense-modal').modal('hide')

@@ -8,13 +8,13 @@
   $('.average-transactions').html("<%= number_to_currency(get_average_per_month(@expenses)) %>")
 
   // show alert
-  $(".expense-alert").removeClass("alert-danger").addClass("fade in alert-success")
+  $(".alert-growl").removeClass("alert-danger").addClass("fade in alert-success")
 
   const type = "<%= flash[:success].options %>"
   const concept = "<%= flash[:success].concept %>"
   const amount = "<%= number_to_currency(flash[:success].amount) %>"
   const date = "<%= flash[:success].date.strftime("%B %d") %>"
-  $(".expense-alert div").html(`${type} <strong>${concept}</strong> por <strong>${amount}</strong> el día <strong>${date}</strong> fue creado exitosamente`)
+  $(".alert-growl div").html(`${type} <strong>${concept}</strong> por <strong>${amount}</strong> el día <strong>${date}</strong> fue creado exitosamente`)
 
   // hide modal
   $('#expense-modal').modal('hide')

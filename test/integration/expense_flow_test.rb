@@ -12,8 +12,4 @@ class ExpenseFlowTest < Capybara::Rails::TestCase
     assert page.has_content?(@one.options)
     assert page.has_content?(@two.options)
   end
-  
-  test 'flow create a expense' do
-    visit "/expenses"
-  end 
 end
