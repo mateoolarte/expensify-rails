@@ -4,9 +4,9 @@ class Expense < ApplicationRecord
   validates :concept, :date, :amount, :options, presence: true
 
   scope :expenses_six_months, -> { where( date: (DateTime.now.months_ago(6).beginning_of_month)..DateTime.now) }
-  scope :expenses_month_ago, -> (month_ago) { where(date: DateTime.now.months_ago(month_ago.to_i).beginning_of_month..DateTime.now.months_ago(month_ago.to_i).end_of_month).order(date: :desc) }
-  scope :expenses_type, -> (type) { where("options ILIKE ?", "%#{type}%")  }
-  scope :expenses_category, -> (category) { where("category_id = ?", category) }
+  scope :month_ago, -> (month_ago) { where(date: DateTime.now.months_ago(month_ago.to_i).beginning_of_month..DateTime.now.months_ago(month_ago.to_i).end_of_month).order(date: :desc) }
+  scope :type, -> (type) { where("options ILIKE ?", "%#{type}%")  }
+  scope :category, -> (category) { where("category_id = ?", category) }
   
   def self.get_options
     expenses = self.all

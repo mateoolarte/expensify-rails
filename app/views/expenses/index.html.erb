@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <h4 class="filter-header">Tipo de transacción <span>Elige para filtrar<span></h4>
       <div class="list-group filter-type">
-        <% @expenses_options.each do |option| %>
+        <% Expense.get_options.each do |option| %>
           <a href="#" class="list-group-item filter-option" data-options="<%= option %>"><%= option %></a>
         <% end %>
         <!-- more transaction types -->
@@ -44,7 +44,7 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <% @expenses_last_year.each do |date_month| %>
+              <% Expense.get_months_last_year.each do |date_month| %>
                 <% date_month.each do |k, v| %>
                   <li role="presentation">
                     <a href="#" class="filter-month" data-month="<%= k %>"><%= v %></a>
@@ -74,3 +74,6 @@
     </div>
   </div>
 </div>
+<script>
+  new LoadAJAX()
+</script>

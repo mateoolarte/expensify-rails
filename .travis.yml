@@ -18,8 +18,3 @@ deploy:
   provider: heroku
   api_key:
     secure: "925b60ee-a49c-47e7-ba05-8453221e0e4d"
-  run:
-    - "rails db:drop"
-    - "rails db:create"
-    - "rails db:migrate"
-    - "rails db:seed"

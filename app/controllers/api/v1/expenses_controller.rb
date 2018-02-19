@@ -4,17 +4,11 @@ class Api::V1::ExpensesController < ApplicationController
   def index
     @expenses = Expense.all
 
-    if params[:page].present?
-      @expenses = @expenses.paginate(:page => params[:page], :per_page => 50)
-    end  
+    @expenses = @expenses.paginate(:page => params[:page], :per_page => 50) if params[:page].present?
 
-    if params[:options].present?
-      @expenses = @expenses.where("options ILIKE ?", "%#{params[:options]}%")      
-    end
-
-    if params[:category_id].present?
-      @expenses = @expenses.where("category_id = ?", params[:category_id])
-    end
+    @expenses = @expenses.type(params[:options]) if params[:options].present?
+       
+    @expenses = @expenses.category(params[:category_id]) if params[:category_id].present?
 
     render json: @expenses
   end

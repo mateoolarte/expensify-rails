@@ -5,17 +5,16 @@ class ExpensesController < ApplicationController
   def index
     @tab = :expenses
     
-    @expenses_last_year = Expense.get_months_last_year
-    @expenses_options = Expense.get_options
+    @dropdown_date = @expenses.first
     
     if params[:month_ago].present?
-      @expenses = Expense.expenses_month_ago(params[:month_ago]) 
+      @expenses = Expense.month_ago(params[:month_ago]) 
       @dropdown_date = @expenses.first
     end  
     
-    @expenses = @expenses.expenses_type(params[:type]) if params[:type].present?
+    @expenses = @expenses.type(params[:type]) if params[:type].present?
     
-    @expenses = @expenses.where("category_id = ?", params[:category]) if params[:category].present?
+    @expenses = @expenses.category(params[:category]) if params[:category].present?
 
     respond_to do |format|
       format.html

@@ -4,7 +4,7 @@ $('.total-transactions').html("<%= @expenses.count %>")
 $('.average-transactions').html("<%= number_to_currency(get_average_per_month(@expenses)) %>")
 
 // update dropdown title
-$(".dropdown-toggle div").html("<%= @dropdown_date.date.strftime("%B %Y") %>")
+$(".dropdown-toggle div").html("<%= @dropdown_date == nil ? Date.today.strftime("%B %Y") : @dropdown_date.date.strftime("%B %Y") %>")
 
 // update content
 $("#expenses-table tbody").empty().append("<%= j render "expensesdata" %>")
