@@ -20,27 +20,27 @@
     <div class="col-md-9 index-data">
       <div class="row" style="margin-top: 10px;">
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value total-per-month"><%= number_to_currency(get_total_amount_per_month(@expenses_per_month)) %></div>
+          <div class="summary-value total-per-month"><%= number_to_currency(get_total_amount_per_month(@expenses)) %></div>
           <div class="summary-label">Total</div>
         </div>
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value total-transactions"><%= @expenses_per_month.count %></div>
+          <div class="summary-value total-transactions"><%= @expenses.count %></div>
           <div class="summary-label">Transacciones</div>
         </div>
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value average-transactions"><%= number_to_currency(get_average_per_month(@expenses_per_month)) %></div>
+          <div class="summary-value average-transactions"><%= number_to_currency(get_average_per_month(@expenses)) %></div>
           <div class="summary-label">Promedio</div>
         </div>
       </div>
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
-          <%= link_to new_expense_path, class: "btn btn-success pull-left holie", remote: true do %>
+          <%= link_to new_expense_path, class: "btn btn-success pull-left", remote: true do %>
             <span class="glyphicon glyphicon-plus"></span> Nuevo gasto
           <% end %>
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">
-              <div><%= @dropdown_date %></div>
+              <div><%= Date.today.strftime("%B %Y") %></div>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">

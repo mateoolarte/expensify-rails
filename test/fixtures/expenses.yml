@@ -13,3 +13,10 @@ two:
   date: 2018-01-12
   amount: 10.00
   category: two
+
+updated:
+  options: Transferencia
+  concept: MyString2
+  date: 2018-01-11
+  amount: 11.00
+  category: three

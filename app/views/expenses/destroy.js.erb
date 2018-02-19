@@ -2,9 +2,9 @@
 $(`#${<%= @expense.id %>}`).remove()
 
 // update header values
-$('.total-per-month').html("<%= number_to_currency(get_total_amount_per_month(@expenses_per_month)) %>")
-$('.total-transactions').html("<%= @expenses_per_month.count %>")
-$('.average-transactions').html("<%= number_to_currency(get_average_per_month(@expenses_per_month)) %>")
+$('.total-per-month').html("<%= number_to_currency(get_total_amount_per_month(@expenses)) %>")
+$('.total-transactions').html("<%= @expenses.count %>")
+$('.average-transactions').html("<%= number_to_currency(get_average_per_month(@expenses)) %>")
 
 // show alert
 $(".expense-alert").removeClass("alert-success").addClass("fade in alert-danger")

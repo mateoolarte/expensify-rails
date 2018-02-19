@@ -4,23 +4,18 @@ class ExpensesController < ApplicationController
 
   def index
     @tab = :expenses
-
-    @dropdown_date = @expenses_per_month.first.get_date_dropdown
+    
     @expenses_last_year = Expense.get_months_last_year
     @expenses_options = Expense.get_options
     
     if params[:month_ago].present?
-      @expenses_per_month = Expense.where(date: DateTime.now.months_ago(params[:month_ago].to_i).beginning_of_month..DateTime.now.months_ago(params[:month_ago].to_i).end_of_month).order(date: :desc)
-      @dropdown_date = @expenses_per_month.first.get_date_dropdown
-    end
+      @expenses = Expense.expenses_month_ago(params[:month_ago]) 
+      @dropdown_date = @expenses.first
+    end  
     
-    if params[:type].present?
-      @expenses_per_month = @expenses_per_month.where("options ILIKE ?", "%#{params[:type]}%") 
-    end
+    @expenses = @expenses.expenses_type(params[:type]) if params[:type].present?
     
-    if params[:category].present?
-      @expenses_per_month = @expenses_per_month.where("category_id = ?", params[:category])
-    end
+    @expenses = @expenses.where("category_id = ?", params[:category]) if params[:category].present?
 
     respond_to do |format|
       format.html
@@ -60,6 +55,6 @@ class ExpensesController < ApplicationController
     end
 
     def get_expenses_per_month
-      @expenses_per_month = Expense.where(date: DateTime.now.all_month).order(date: :desc)
+      @expenses = Expense.where(date: DateTime.now.all_month).order(date: :desc)
     end
 end
