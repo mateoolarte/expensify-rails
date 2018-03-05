@@ -54,6 +54,6 @@ class ExpensesController < ApplicationController
     end
 
     def get_expenses_per_month
-      @expenses = Expense.where(date: DateTime.now.all_month).order(date: :desc)
+      @expenses = Expense.month_ago
     end
 end

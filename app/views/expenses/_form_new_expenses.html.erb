@@ -23,9 +23,9 @@
             </div>
             <div class="col-sm-12">
               <div class="form-group concept-group">
-                <label class="control-label">Concepto del gasto</label>
+                <%= f.label :concept, class: "control-label" %>
                 <%= f.text_field :concept, class: "form-control" %>
-                <span class="help-block concept-field hide">Hola</span>
+                <span class="help-block concept-field hide"></span>
               </div>  
             </div>
             <div class="col-md-6">
@@ -37,7 +37,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label>Valor del gasto</label>
+                <%= f.label :amount, class: "control-label" %>
                 <%= f.number_field :amount, value: 0, min: 0, class: "form-control text-right"  %>
               </div>  
             </div>

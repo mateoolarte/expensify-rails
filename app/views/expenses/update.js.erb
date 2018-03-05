@@ -1,7 +1,6 @@
-<% if @expense.errors.empty? %>
+<% if @expense.valid? %>
   // remove the row from list
   $(`#${<%= @expense.id %>}`).remove()
-
 
   // update header values
   $('.total-per-month').html("<%= number_to_currency(get_total_amount_per_month(@expenses)) %>")
@@ -14,6 +13,9 @@
 
   // hide modal
   $('#expense-modal').modal('hide')
+
+  // add the row to the table
+  $('#expenses-table tbody').append('<%= j render "expense_box", expense: @expense %>')
 <% else %>
   // show first error
   $(".concept-group").addClass("has-error")
