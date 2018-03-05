@@ -60,9 +60,8 @@ group :development do
 end
 
 group :test do
-  # gem 'chromedriver-helper'
-  gem 'geckodriver-helper'
   gem 'minitest-reporters'
+  gem 'minitest-rails-capybara'
   gem 'rails-controller-testing'
 end
 
