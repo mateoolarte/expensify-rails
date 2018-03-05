@@ -69,9 +69,6 @@ GEM
       xpath (>= 2.0, < 4.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
-    chromedriver-helper (1.1.0)
-      archive-zip (~> 0.7.0)
-      nokogiri (~> 1.6)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -84,6 +81,8 @@ GEM
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.23)
+    geckodriver-helper (0.0.4)
+      archive-zip (~> 0.7.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.5)
@@ -213,9 +212,9 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.7)
   byebug
   capybara
-  chromedriver-helper
   coffee-rails (~> 4.2)
   faker!
+  geckodriver-helper
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
